@@ -31,6 +31,7 @@ const renderReg = () =>{
 
     inputName.classList = 'nameI';
     inputDoc.classList = 'docI';
+    inputTel.classList = 'telI';
     inputEdad.classList = 'edaI';
     inputProf.classList = 'profI';
     inputPass.classList = 'passI';
@@ -97,7 +98,7 @@ const renderConsI = () =>{
 
     return sectionRender.appendChild(container);
 }
-const renderAct = () =>{
+const renderAct = () => {
     sectionRender.textContent = "";
 
     const title =  document.createElement('h3');
@@ -153,7 +154,7 @@ const renderEli = () =>{
 
     container.classList = 'container';    
     content.classList = 'content';
-    inputID.classList = 'eliI'  
+    inputID.classList = 'eliI';  
 
     inputID.setAttribute('type',"text");
     inputID.setAttribute('placeholder',"Documento a Eliminar...");
@@ -195,3 +196,6 @@ const renderConsG = () =>{
 
     return sectionRender.appendChild(container);
 }
+////////////////////////////////////////////////////////////////
+const renderArrConsG = (element) => {console.log(element);console.log("Consulta General");}
+const renderArrConsI = (element) => {console.log(element);console.log("Consulta Individual");}
