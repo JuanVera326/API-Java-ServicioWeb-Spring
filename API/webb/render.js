@@ -26,8 +26,15 @@ const renderReg = () =>{
     const container = document.createElement('div');
     
     title.textContent = "Regitro!!";
-    btnReg.textContent = "Registar"
+    btnReg.textContent = "Registrar"
     btnReg.setAttribute('type','submit')
+
+    inputName.classList = 'nameI';
+    inputDoc.classList = 'docI';
+    inputEdad.classList = 'edaI';
+    inputProf.classList = 'profI';
+    inputPass.classList = 'passI';
+    inputType.classList = 'typeI';
 
     inputName.setAttribute('type','text');
     inputName.setAttribute('placeholder','Ingresa tu Nombre...');
@@ -57,6 +64,8 @@ const renderReg = () =>{
     container.appendChild(inputType);
     container.appendChild(btnReg);
 
+    btnReg.addEventListener('click', () => {registrarPersona();});
+
     return sectionRender.appendChild(container);
 }
 const renderConsI = () =>{
@@ -70,6 +79,7 @@ const renderConsI = () =>{
 
     container.classList = 'container';    
     content.classList = 'content';
+    inputID.classList = 'consIndI';
 
     inputID.setAttribute('type',"text");
     inputID.setAttribute('placeholder',"Documento a Consultar...");
@@ -82,6 +92,8 @@ const renderConsI = () =>{
     container.appendChild(inputID);
     container.appendChild(btnCon);
     container.appendChild(content);
+
+    btnCon.addEventListener('click', () => {consultaIndividual();})
 
     return sectionRender.appendChild(container);
 }
@@ -97,21 +109,26 @@ const renderAct = () =>{
     const btnAct = document.createElement('button');
     const container = document.createElement('div');
     
+    inputName.classList = 'nameActI';
+    inputDoc.classList = 'docActI';
+    inputEdad.classList = 'edaActI';
+    inputProf.classList = 'profActI';
+
     title.textContent = "Actualizar!!";
     btnAct.textContent = "Actualizar"
     btnAct.setAttribute('type','submit')
 
     inputName.setAttribute('type','text');
-    inputName.setAttribute('placeholder','Ingresa tu Nombre...');
+    inputName.setAttribute('placeholder','Ingresa tu new Nombre...');
     inputDoc.setAttribute('type','text');
-    inputDoc.setAttribute('placeholder','Ingresa tu Documento...');
+    inputDoc.setAttribute('placeholder','Ingresa tu new Documento...');
     inputTel.setAttribute('type','text');
-    inputTel.setAttribute('placeholder','Ingresa tu Telefono...');
+    inputTel.setAttribute('placeholder','Ingresa tu new Telefono...');
     inputEdad.setAttribute('type','number');
-    inputEdad.setAttribute('placeholder','Ingresa tu Edad...');
+    inputEdad.setAttribute('placeholder','Ingresa tu new Edad...');
     inputEdad.setAttribute('min','1');
     inputProf.setAttribute('type','text');
-    inputProf.setAttribute('placeholder','Ingresa tu Profesion...');
+    inputProf.setAttribute('placeholder','Ingresa tu new Profesion...');
 
     container.appendChild(title);
     container.appendChild(inputName);
@@ -120,6 +137,8 @@ const renderAct = () =>{
     container.appendChild(inputEdad);
     container.appendChild(inputProf);   
     container.appendChild(btnAct);
+
+    btnAct.addEventListener('click', () => {actualizarPersona();});
 
     return sectionRender.appendChild(container);
 }
@@ -134,6 +153,7 @@ const renderEli = () =>{
 
     container.classList = 'container';    
     content.classList = 'content';
+    inputID.classList = 'eliI'  
 
     inputID.setAttribute('type',"text");
     inputID.setAttribute('placeholder',"Documento a Eliminar...");
@@ -146,6 +166,8 @@ const renderEli = () =>{
     container.appendChild(inputID);
     container.appendChild(btnEli);
     container.appendChild(content);
+
+    btnEli.addEventListener('click', () =>{eliminarPersona();});
 
     return sectionRender.appendChild(container);
 }
@@ -168,6 +190,8 @@ const renderConsG = () =>{
     container.appendChild(title);
     container.appendChild(btnConG);
     container.appendChild(content);
+
+    btnConG.addEventListener('click', () => {consultarTodo();})
 
     return sectionRender.appendChild(container);
 }
