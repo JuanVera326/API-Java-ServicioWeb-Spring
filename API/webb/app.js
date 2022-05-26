@@ -1,5 +1,4 @@
 let server = "http://localhost:8080/servicio";
-let arr;
 
 const registrarPersona = () => {
 
@@ -25,11 +24,13 @@ const registrarPersona = () => {
 
     let personaJSON = JSON.stringify(persona);
 
-    send(personaJSON,URL,'POST');
+    send(URL,personaJSON,'POST');
     
-    console.log("Regitrando!!!\n"+personaJSON);
+    console.log("Regitrando!!!\n");
 }
 const actualizarPersona = () => {
+
+    let URL = server + "/guardar";
 
     const name = document.querySelector('.nameActI');
     const doc = document.querySelector('.docActI');
@@ -45,24 +46,20 @@ const actualizarPersona = () => {
 
     let personaActJSON = JSON.stringify(persona);
 
-    console.log("Actualizar!!!\n"+personaActJSON);
+    send(URL,personaActJSON,'PUT');
+
+    console.log("Actualizando!!!\n");
 }
 const eliminarPersona = () => {
-
     const idEli = document.querySelector('.eliI');
-
-    let id = {};
-
-    id.documento = idEli.value;
-
-    let idJSON = JSON.stringify(id);
-    console.log("Eliminar!!!\n"+idJSON);
+    URL = server + `/eliminar/${idEli.value}`;
+    send(URL,"",'DELETE');
+    console.log("Eliminado!!!\n");
 }
 const consultarTodo = () => {
     getGeneral('/personas-list',1);
 }
 const consultaIndividual = () => {
-
     const idCon = document.querySelector('.consIndI');
     getOnlyone(`/personas/${idCon.value}`,0);
 }
@@ -81,17 +78,14 @@ const getOnlyone = (ext) => {
     .then(response => response.json())
     .then(data => renderArrConsI(data));
 }
-const send = (datos,url,method) => {
-    $.ajax({
-        url : url,
-        data : datos,   
-        method : method,
-        dataType : 'JSON',
-        success : function resp(){
-               console.log("Exitoso!!");
-        },
-        error: function rsp(){
-               console.log("No Exitoso !!");
+const send = (URL,datos,method) => {
+    fetch(URL, {
+        method: method,
+        body: datos,
+        headers:{
+          'Content-Type': 'application/json'
         }
-    });
+      }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
 }
