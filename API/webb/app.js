@@ -1,22 +1,22 @@
 let server = "http://localhost:8080/servicio";
 
+const names = document.querySelector('.inputName');
+const doc = document.querySelector('.inputDoc');
+const age = document.querySelector('.inputAge');
+const tel = document.querySelector('.inputTel');
+const prof = document.querySelector('.inputProf');
+const pass = document.querySelector('.inputPass');
+const type = document.querySelector('.inputTip');
+
+
 const registrarPersona = () => {
 
     let URL = server + `/guardar`;
-
-    const name = document.querySelector('.nameI');
-    const doc = document.querySelector('.docI');
-    const age = document.querySelector('.edaI');
-    const tel = document.querySelector('.telI');
-    const prof = document.querySelector('.profI');
-    const pass = document.querySelector('.passI');
-    const type = document.querySelector('.typeI');
-
     let persona = {};
 
     persona.documento = doc.value;
     persona.edad = parseInt(age.value);
-    persona.nombre = name.value;
+    persona.nombre = names.value;
     persona.password = pass.value;
     persona.profesion = prof.value;
     persona.telefono = tel.value;
@@ -30,19 +30,17 @@ const registrarPersona = () => {
 }
 const actualizarPersona = () => {
 
-    let URL = server + "/guardar";
+    let URL = server + "/actualizar";
 
-    const name = document.querySelector('.nameActI');
-    const doc = document.querySelector('.docActI');
-    const age = document.querySelector('.edaActI');
-    const prof = document.querySelector('.profActI');
-   
     let persona = {};
 
-    persona.nombre = name.value;
     persona.documento = doc.value;
-    persona.edad = age.value;
+    persona.edad = parseInt(age.value);
+    persona.nombre = names.value;
+    persona.password = pass.value;
     persona.profesion = prof.value;
+    persona.telefono = tel.value;
+    persona.tipo = parseInt(type.value);
 
     let personaActJSON = JSON.stringify(persona);
 
@@ -51,17 +49,15 @@ const actualizarPersona = () => {
     console.log("Actualizando!!!\n");
 }
 const eliminarPersona = () => {
-    const idEli = document.querySelector('.eliI');
-    URL = server + `/eliminar/${idEli.value}`;
+    URL = server + `/eliminar/${doc.value}`;
     send(URL,"",'DELETE');
     console.log("Eliminado!!!\n");
 }
 const consultarTodo = () => {
-    getGeneral('/personas-list',1);
+    getGeneral('/personas-list');
 }
 const consultaIndividual = () => {
-    const idCon = document.querySelector('.consIndI');
-    getOnlyone(`/personas/${idCon.value}`,0);
+    getOnlyone(`/personas/${doc.value}`);
 }
 ////////////////////////////////////////////////////////////////
 const getGeneral = (ext) => {
