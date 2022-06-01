@@ -24,7 +24,7 @@ const registrarPersona = () => {
 
     let personaJSON = JSON.stringify(persona);
 
-    send(URL,personaJSON,'POST');
+    send(URL,personaJSON,'POST','Registro');
     
     console.log("Regitrando!!!\n");
 }
@@ -44,13 +44,13 @@ const actualizarPersona = () => {
 
     let personaActJSON = JSON.stringify(persona);
 
-    send(URL,personaActJSON,'PUT');
+    send(URL,personaActJSON,'PUT','Actualizacion');
 
     console.log("Actualizando!!!\n");
 }
 const eliminarPersona = () => {
     URL = server + `/eliminar/${doc.value}`;
-    send(URL,"",'DELETE');
+    send(URL,"",'DELETE','Eliminacion');
     console.log("Eliminado!!!\n");
 }
 const consultarTodo = () => {
@@ -74,14 +74,14 @@ const getOnlyone = (ext) => {
     .then(response => response.json())
     .then(data => renderArrConsI(data));
 }
-const send = (URL,datos,method) => {
+const send = (URL,datos,method,str) => {
     fetch(URL, {
         method: method,
         body: datos,
         headers:{
           'Content-Type': 'application/json'
         }
-      }).then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+      })
+      .then(response => (response.json()))
+      .then(response => console.log(response))
 }

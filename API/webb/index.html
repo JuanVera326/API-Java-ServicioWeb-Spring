@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
 </head>
 <body>
     <div class="section1">
-        <nav>
-            <button id="reg">Registrar</button>
-            <button id="conI">Consulta Individual</button>
-            <button id="act">Actualizar</button>
-            <button id="eli">Eliminar</button>
-            <button id="conG">Consulta General</button> 
-        </nav>
+        <div class="consulta">
+            <button class="conI btn">Consultar</button>
+            <input type="text" placeholder="Documento..." class="inputDoc ipt"></div>
+        <br>
+        <ul>
+            <li><input type="text" placeholder="Edad..." class="inputAge ipt"></li>
+            <li><input type="text" placeholder="Telefono..." class="inputTel ipt"></li>
+            <li><input type="text" placeholder="Profesion..." class="inputProf ipt"></li>
+            <li><input type="password" placeholder="Contraseña..." class="inputPass ipt"></li>
+            <li><input type="number" min="1" max="2" placeholder="Tipo..." class="inputTip ipt"></li>
+        </ul>
     </div>
-    <div id="section2">
-        <input type="text" placeholder="Nombre..." class="inputName">
-        <input type="text" placeholder="Documento..." class="inputDoc">
-        <input type="text" placeholder="Edad..." class="inputAge">
-        <input type="text" placeholder="Telefono..." class="inputTel">
-        <input type="text" placeholder="Profesion..." class="inputProf">
-        <input type="password" placeholder="Contraseña..." class="inputPass">
-        <input type="number" min="1" max="2" placeholder="Tipo..." class="inputTip">
+    <div class="section2">
+        <button class="reg btn">Registrar</button>
+        <button class="act btn">Actualizar</button>
+        <button class="eli btn">Eliminar</button>
+        <button class="conG btn">Consulta General</button> 
     </div>
 </body>
 <script src="render.js"></script>
 <script src="app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
